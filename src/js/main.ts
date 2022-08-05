@@ -3,4 +3,4 @@ import '../scss/main.scss'
 
 import CodeBreaker from "./code-breaker";
 
-const codeBreaker = new CodeBreaker();
+new CodeBreaker();

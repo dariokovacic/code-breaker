@@ -5,8 +5,6 @@ body {
   background-color: $dark;
   height: 100vh;
   font-size: 1.2rem;
-  display: flex;
-  align-items: center;
 }
 
 ul {
@@ -14,23 +12,31 @@ ul {
   margin: 0;
 }
 
-.code {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  font-size: 3rem;
-}
+.game-wrapper {
+  padding: 5rem 0.5rem;
 
-.msg {
-  position: absolute;
-  top: -70px;
-  left: 0;
-  right: 0;
-}
-
-.results {
-  .result-header, .result-row {
+  @include media-breakpoint-up(lg) {
+    padding: 10rem 1.5rem;
+  }
+  .code {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    list-style-type: none;
+    font-size: 3rem;
+  }
+  
+  .notification {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    right: 0;
+    height: 100px;
+  }
+  
+  .results {
+    .result-header, .result-row {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }

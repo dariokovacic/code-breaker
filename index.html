@@ -29,9 +29,9 @@
                     <li><i class="bi bi-file-lock-fill"></i></li>
                   </ul>
 
-                  <div class="mt-5 w-50 d-grid">
+                  <div class="mt-5 d-grid">
                     <div class="input-group">
-                      <input type="number" class="form-control user-input" placeholder="4-digit" aria-label="Code" required>
+                      <input type="number" class="form-control user-input" placeholder="4-digit-code" aria-label="Code" required>
                       <button class="btn btn-primary guess" type="button">Guess</button>
                     </div>
                     <button type="button" class="play-again btn btn-success d-none">Play again</button>
@@ -41,14 +41,14 @@
               </div>
 
               <ul class="results invisible list-group list-group-flush w-100 mt-5">
-                <li class="list-group-item result-header px-4">
+                <li class="list-group-item result-header px-2">
                   <i class="bi bi-caret-down-fill"></i>
-                  <span class="fw-bold">Guess</span>
+                  <span class="fw-bold me-5">Guess</span>
                   <span class="fw-bold">Result</span>
                 </li>
               </ul>
 
-              <div class="card-footer text-muted"><small>v1.0.0</small></div>
+              <div class="card-footer text-muted"><small>v1.0.1</small></div>
             </div>
 
           </div>
@@ -65,8 +65,13 @@
             <li>You lose if you fail to guess the code under 10 guesses.</li>
             <br>
             <li><i class="bi bi-check-lg"></i> Indicates a number is in the correct place.</li>
+            <br>
             <li><i class="bi bi-arrow-left-right"></i> Indicates a number is part of the code, but not in the right position.</li>
+            <br>
+
             <li><i class="bi bi-arrow-left-right"></i> Doesn't tell how many times a number exists in the code.</li>
+            <br>
+
             <li><i class="bi bi-x-circle"></i> Indicates a number is not part of the code.</li>
           </ul>
         </div>

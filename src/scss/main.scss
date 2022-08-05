@@ -4,7 +4,6 @@
 body {
   background-color: $dark;
   height: 100vh;
-  font-size: 1.2rem;
 }
 
 ul {
@@ -38,5 +37,17 @@ ul {
       display: flex;
       justify-content: space-between;
     }
+  }
+
+  .modal-header {
+    justify-content: center;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .modal-body {
+    text-align: center;
   }
 }

@@ -1,4 +1,4 @@
-import { Alert } from "bootstrap";
+import { Alert, Modal } from "bootstrap";
 
 export default class CodeBreaker {
   code: string = '';
@@ -9,6 +9,7 @@ export default class CodeBreaker {
   userInput: HTMLInputElement | null;
   notification: HTMLInputElement | null;
   results: HTMLElement | null;
+  playAgain: HTMLElement | null;
   alert: Alert;
 
   constructor() {
@@ -17,6 +18,7 @@ export default class CodeBreaker {
     this.guessButton = this.game!.querySelector('.guess');
     this.userInput = this.game!.querySelector('.user-input');
     this.results = this.game!.querySelector('.results');
+    this.playAgain = document.createElement('button');
     this.alert = new Alert('.notification');
 
     this.init();
@@ -30,16 +32,17 @@ export default class CodeBreaker {
   bindEvents() {
     this.guessButton!.addEventListener('click', () => {
       this.guess();
+      this.userInput?.blur();
     });
 
     this.userInput!.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         this.guessButton!.click();
+        this.userInput?.blur();
       }
     });
 
-    const playAgain: HTMLElement | null = this.game!.querySelector('.play-again'); 
-    playAgain?.addEventListener('click', () => {
+    this.playAgain?.addEventListener('click', () => {
       location.reload();
     });
   }
@@ -49,14 +52,14 @@ export default class CodeBreaker {
       switch (this.getResults()) {
         case true:
           this.showCode();
-          this.showReplay();
-          this.showNotification('success', "Nice, You broke the code!");
+          this.showModal('success', 'You win.');
+          this.game?.querySelector('.input-group')?.classList.add('d-none');
           break;
         case false:
           if (this.attempt >= 10) {
             this.showCode();
-            this.showReplay();
-            this.showNotification('danger', "You lost.");
+            this.showModal('danger', 'You lost.');
+            this.game?.querySelector('.input-group')?.classList.add('d-none');
             break;
           }
         default:
@@ -87,14 +90,13 @@ export default class CodeBreaker {
 
     this.results?.classList.remove('invisible');
     const resultRow = document.createElement('li');
-    resultRow.classList.add('result-row', 'list-group-item', 'px-4');
+    resultRow.classList.add('result-row', 'list-group-item', 'px-2');
 
     const attemptSpan = document.createElement('span');
     attemptSpan.classList.add('ms-1');
-    attemptSpan.innerHTML = this.attempt.toString();
+    attemptSpan.innerHTML = this.attempt.toString() + '.';
 
     const inputSpan = document.createElement('span');
-    inputSpan.classList.add('ms-5');
 
     inputSpan.innerHTML = input;
 
@@ -116,7 +118,8 @@ export default class CodeBreaker {
     while (code.length < 4) {
       code = '0' + code;
     }
-
+    console.log(code);
+    
     this.code = code;
   }
 
@@ -126,7 +129,7 @@ export default class CodeBreaker {
     }
 
     this.showNotification('danger', "You didn't enter 4 digits");
-    return false
+    return false;
   }
 
   showNotification(type: string, msg: string) {
@@ -153,6 +156,47 @@ export default class CodeBreaker {
     }, 4000);
   }
 
+  showModal (type: string, msg: string) {
+    const modal = document.createElement('div');
+    const modalDialog = document.createElement('div');
+    const modalContent = document.createElement('div');
+    
+    const modalHeader = document.createElement('div');
+    const modalTitle = document.createElement('h2');
+    
+    const modalBody = document.createElement('div');
+    const playAgain = this.playAgain;
+
+    modal.classList.add('modal', 'fade');
+    modal.setAttribute('data-bs-backdrop', 'static');
+    modal.setAttribute('data-bs-keyboard', 'false');
+    modalDialog.classList.add('modal-dialog', 'modal-dialog-centered');
+    modalContent.classList.add('modal-content');
+    
+    modalHeader.classList.add('modal-header');
+    modalTitle.classList.add('modal-title', 'ms-3');
+    if (type === 'success') {
+      modalHeader.appendChild(this.createIcon('check-circle-fill'));
+    } else {
+      modalHeader.appendChild(this.createIcon('x-circle-fill'));
+      
+    }
+    modalTitle.append(msg);
+    
+    modalBody.classList.add('modal-body');
+    playAgain?.classList.add('btn', 'btn-success', 'play-again');
+    playAgain?.setAttribute('type', 'button');
+    playAgain!.innerText = 'Play Again';
+
+    modalHeader.appendChild(modalTitle);
+    modal.appendChild(modalDialog).appendChild(modalContent).appendChild(modalHeader);
+    modalContent.appendChild(modalBody).appendChild(playAgain!);
+    this.game?.appendChild(modal);
+
+    const endScreen = new Modal('.modal');
+    endScreen.show();
+  }
+
   createIcon(iconClass: string): HTMLElement {
     const icon = document.createElement('i');
     icon.classList.add('bi', `bi-${iconClass}`, 'mx-1');
@@ -167,10 +211,5 @@ export default class CodeBreaker {
       li.removeChild(li.lastChild!);
       li.innerHTML = this.code[index];
     });
-  }
-
-  showReplay() {
-    this.game?.querySelector('.input-group')?.classList.add('d-none');
-    this.game?.querySelector('.play-again')?.classList.remove('d-none');
   }
 }

@@ -117,8 +117,6 @@ export default class CodeBreaker {
       code = '0' + code;
     }
 
-    console.log(`code: ${code}`);
-
     this.code = code;
   }
 

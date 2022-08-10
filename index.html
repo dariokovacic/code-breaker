@@ -1,84 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Breaker</title>
-  </head>
+<head >
+  <meta charset="UTF-8" />
+  <link href="/vite.svg" rel="icon" type="image/svg+xml" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title >Code Breaker</title >
+</head >
 
-  <body>
+<body >
 
-    <div class="container">
-      <div class="game-wrapper row">
-        <div class="col-12 col-lg-6">
-          <div class="mx-lg-5 position-relative">
-            <div class="notification overflow-hidden"></div>
+<div class="container" >
+  <div class="game-wrapper row" >
+    <div class="col-12 col-lg-6" >
+      <div class="mx-lg-5 position-relative" >
+        <div class="notification overflow-hidden" ></div >
 
-            <div class="card js-game">
-              <div class="card-header"><small class="text-muted">Confidential</small></div>
-              <div class="card-body">
-                <h1 class="card-title text-center font-monospace">Code Breaker</h1>
-                <div class="card-text d-flex flex-column align-items-center">
+        <div class="card js-game" >
+          <div class="card-header" ><small class="text-muted" >Confidential</small ></div >
+          <div class="card-body" >
+            <h1 class="card-title text-center font-monospace" >Code Breaker</h1 >
+            <div class="card-text d-flex flex-column align-items-center" >
 
-                  <ul class="code fw-bolder">
-                    <li><i class="bi bi-file-lock-fill"></i></li>
-                    <li><i class="bi bi-file-lock-fill"></i></li>
-                    <li><i class="bi bi-file-lock-fill"></i></li>
-                    <li><i class="bi bi-file-lock-fill"></i></li>
-                  </ul>
+              <ul class="code fw-bolder" >
+                <li ><i class="bi bi-file-lock-fill" ></i ></li >
+                <li ><i class="bi bi-file-lock-fill" ></i ></li >
+                <li ><i class="bi bi-file-lock-fill" ></i ></li >
+                <li ><i class="bi bi-file-lock-fill" ></i ></li >
+              </ul >
 
-                  <div class="mt-5 d-grid">
-                    <div class="input-group">
-                      <input type="number" class="form-control user-input" placeholder="4-digit-code" aria-label="Code" required>
-                      <button class="btn btn-primary guess" type="button">Guess</button>
-                    </div>
-                    <button type="button" class="play-again btn btn-success d-none">Play again</button>
-                  </div>
+              <div class="mt-5 d-grid" >
+                <div class="input-group" >
+                  <input aria-label="Code" class="form-control user-input" placeholder="4-digit-code"
+                         required type="number" >
+                  <button class="btn btn-primary guess" type="button" >Guess</button >
+                </div >
+                <button class="play-again btn btn-success d-none" type="button" >Play again</button >
+              </div >
 
-                </div>
-              </div>
+            </div >
+          </div >
 
-              <ul class="results invisible list-group list-group-flush w-100 mt-5">
-                <li class="list-group-item result-header px-2">
-                  <i class="bi bi-caret-down-fill"></i>
-                  <span class="fw-bold me-5">Guess</span>
-                  <span class="fw-bold">Result</span>
-                </li>
-              </ul>
+          <ul class="results invisible list-group list-group-flush w-100 mt-5" >
+            <li class="list-group-item result-header px-2" >
+              <i class="bi bi-caret-down-fill" ></i >
+              <span class="fw-bold me-5" >Guess</span >
+              <span class="fw-bold" >Result</span >
+            </li >
+          </ul >
 
-              <div class="card-footer text-muted"><small>v1.0.1</small></div>
-            </div>
+          <div class="card-footer text-muted" ><small >v1.0.1</small ></div >
+        </div >
 
-          </div>
-        </div>
-        <div class="col-12 col-lg-6 text-white mt-5 mt-lg-0">
-          <h2>Objective</h2>
-          <p class="lead fs-4">Break the 4 digit code.</p>
+      </div >
+    </div >
+    <div class="col-12 col-lg-6 text-white mt-5 mt-lg-0" >
+      <h2 >Objective</h2 >
+      <p class="lead fs-4" >Break the 4-digit code.</p >
 
-          <h3 class="mt-5">Rules</h3>
-          <ul class="list-unstyled">
-            <li>Each guess must consist of 4 numeric characters.</li>
-            <li>Numbers may be used more than once!</li>
-            <li>You win only if your guess is an exact match.</li>
-            <li>You lose if you fail to guess the code under 10 guesses.</li>
-            <br>
-            <li><i class="bi bi-check-lg"></i> Indicates a number is in the correct place.</li>
-            <br>
-            <li><i class="bi bi-arrow-left-right"></i> Indicates a number is part of the code, but not in the right position.</li>
-            <br>
+      <h3 class="mt-5" >Rules</h3 >
+      <ul class="list-unstyled" >
+        <li >Each guess must consist of 4 numeric characters.</li >
+        <li >Numbers may be used more than once!</li >
+        <li >You win only if your guess is an exact match.</li >
+        <li class="mb-4" >You lose if you fail to guess the code under 10 guesses.</li >
+        <li class="mb-4" ><i class="bi bi-check-lg" ></i > Indicates a number is in the correct place.</li >
+        <li class="mb-4" ><i class="bi bi-arrow-left-right" ></i > Indicates a number is part of the code, but not
+          in the right position.
+        </li >
+        <li class="mb-4" ><i class="bi bi-arrow-left-right" ></i > Doesn't tell how many times a number exists in
+          the code.
+        </li >
+        <li ><i class="bi bi-x-circle" ></i > Indicates a number is not part of the code.</li >
+      </ul >
+    </div >
+  </div >
+</div >
 
-            <li><i class="bi bi-arrow-left-right"></i> Doesn't tell how many times a number exists in the code.</li>
-            <br>
+<script src="/src/js/main.ts" type="module" ></script >
+</body >
 
-            <li><i class="bi bi-x-circle"></i> Indicates a number is not part of the code.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <script type="module" src="/src/js/main.ts"></script>
-  </body>
-
-</html>
+</html >

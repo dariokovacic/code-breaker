@@ -17,13 +17,14 @@ ul {
   @include media-breakpoint-up(lg) {
     padding: 10rem 1.5rem;
   }
+
   .code {
     display: flex;
     justify-content: center;
     list-style-type: none;
     font-size: 3rem;
   }
-  
+
   .notification {
     position: absolute;
     top: -70px;
@@ -31,7 +32,7 @@ ul {
     right: 0;
     height: 100px;
   }
-  
+
   .results {
     .result-header, .result-row {
       display: flex;

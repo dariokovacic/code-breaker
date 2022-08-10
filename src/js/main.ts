@@ -1,6 +1,6 @@
 // Import our custom CSS
-import '../scss/main.scss'
+import '../scss/main.scss';
 
-import CodeBreaker from "./code-breaker";
+import CodeBreaker from './code-breaker';
 
 new CodeBreaker();
